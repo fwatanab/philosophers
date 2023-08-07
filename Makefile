@@ -17,10 +17,10 @@ all:$(NAME)
 
 $(NAME):$(OBJS)
 	$(MAKE) -C $(LIBFTDIR)
-	$(CC) $(CFLAGS) $(NAME) $(OBJS) -L$(LIBFTDIR) -lft
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFTDIR) -lft
 
 .c.o:
-	$(CC) $(CFLAGS) -Imlx -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(LIBFTDIR)$(LIBFTNAME):
 	$(MAKE) -C $(LIBFTDIR)
