@@ -30,11 +30,8 @@ int	main(int argc, char **argv)
 	t_philo philo;
 
 	if (argc < 5 || 6 < argc)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
+		return (error());
 	philo = input_philo(argc, argv);
-	ft_printf("eat %d\n", philo.eat);
+	ft_printf("input_philo\n");
 	return (0);
 }

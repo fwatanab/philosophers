@@ -2,7 +2,7 @@ NAME	= philosophers
 
 SRCSDIR	= src/
 
-SRCS = main.c
+SRCS = main.c error.c
 
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 

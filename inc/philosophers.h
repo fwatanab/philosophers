@@ -26,4 +26,6 @@ typedef struct s_philo
 	int	fin;
 }	t_philo;
 
+int	error(void);
+
 # endif
