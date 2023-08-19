@@ -1,8 +1,8 @@
-NAME	= philosophers
+NAME	= philo
 
 SRCSDIR	= src/
 
-SRCS = main.c error.c
+SRCS = main.c error.c philo.c
 
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 
@@ -29,7 +29,7 @@ clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C $(LIBFTDIR) clean
 
-fclean: clean
+fclean:
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIBFTDIR) fclean
 

@@ -16,22 +16,33 @@
 # include <stdio.h>
 # include <pthread.h>
 
+# define TRUE 0
+# define FALSE 1
+
 typedef struct s_philo
 {
-	int	data;
-	int	number;
-	int	die;
-	int	eat;
-	int	sleep;
-	int	fin;
+	pthread_t	p_id;
+	int			id;
+	int			l_fork;
+	int			r_fork;
+	int			eat_count;
 }	t_philo;
 
-typedef struct s_thread
+typedef struct s_control
 {
-	int				num;
+	int				number;
+	int				die;
+	int				eat;
+	int				sleep;
+	int				fin;
+	t_philo			*philo;
 	pthread_mutex_t	mutex;
-}	t_thread;
+	int				death;
+	int				num;
+}	t_control;
 
-int	error(void);
+int		error(void);
+void	start_philo(t_control *data);
+void	*funk(void *data);
 
 # endif
