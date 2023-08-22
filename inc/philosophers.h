@@ -37,6 +37,7 @@ typedef struct s_control
 	int				fin;
 	t_philo			*philo;
 	pthread_mutex_t	mutex;
+	pthread_mutex_t	fork;
 	int				death;
 	int				num;
 }	t_control;
