@@ -25,7 +25,6 @@ typedef struct s_philo
 	int			id;
 	int			l_fork;
 	int			r_fork;
-	int			eat_count;
 }	t_philo;
 
 typedef struct s_control
@@ -34,14 +33,15 @@ typedef struct s_control
 	int				die;
 	int				eat;
 	int				sleep;
-	int				fin;
+	int				end_count;
 	t_philo			*philo;
 	pthread_mutex_t	mutex;
-	pthread_mutex_t	fork;
-	int				death;
+	pthread_mutex_t	*fork;
+	int				p_active;
 	int				num;
 }	t_control;
 
+void	input_args(int argc, char **argv, t_control *data);
 int		error(void);
 void	start_philo(t_control *data);
 void	*funk(void *data);

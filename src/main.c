@@ -6,39 +6,11 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:54:40 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/09 20:50:00 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:27:35 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
-
-void	input_philo(t_control *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->number)
-	{
-		data->philo[i].id = i + 1;
-		data->philo[i].l_fork = 1;
-		i++;
-	}
-}
-
-void	input_args(int argc, char **argv, t_control *data)
-{
-	data->number = ft_atoi(argv[1]);
-	data->die = ft_atoi(argv[2]);
-	data->eat = ft_atoi(argv[3]);
-	data->sleep = ft_atoi(argv[4]);
-	if (argc == 6)
-		data->fin = ft_atoi(argv[5]);
-	data->end_count = 1;
-	data->philo = (t_philo *)malloc(sizeof(t_philo));
-	if (!data->philo)
-		return ;
-	input_philo(data);
-}
 
 void	*funk(void *data)
 {
