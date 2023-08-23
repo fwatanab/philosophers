@@ -21,6 +21,7 @@ static void	input_philo(t_control *data)
 	{
 		data->philo[i].id = i + 1;
 		data->philo[i].l_fork = 1;
+		data->philo[i].control = data;
 		i++;
 	}
 }
@@ -33,7 +34,7 @@ void	input_args(int argc, char **argv, t_control *data)
 	data->sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		data->end_count = ft_atoi(argv[5]);
-	data->p_active = TRUE;
+	data->p_death = FALSE;
 	data->philo = (t_philo *)malloc(sizeof(t_philo));
 	if (!data->philo)
 		return ;

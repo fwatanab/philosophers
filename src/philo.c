@@ -34,3 +34,18 @@ void	start_philo(t_control *data)
 		}
 	}
 }
+
+void	*do_philo(void *ptr)
+{
+	t_philo		*philo;
+	t_control	*data;
+
+	philo = (t_philo *)ptr;
+	data = philo->control;
+	if (philo->id % 2)
+		usleep(1000);
+	while (data->p_death == FALSE)
+	{
+		if (data->)
+	}
+}

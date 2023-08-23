@@ -25,6 +25,7 @@ typedef struct s_philo
 	int			id;
 	int			l_fork;
 	int			r_fork;
+	t_control	control;
 }	t_philo;
 
 typedef struct s_control
@@ -37,7 +38,7 @@ typedef struct s_control
 	t_philo			*philo;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	*fork;
-	int				p_active;
+	int				p_death;
 	int				num;
 }	t_control;
 
