@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/22 13:48:56 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/23 17:46:02 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	start_philo(t_control *data)
 		i = 0;
 		while (i < data->number)
 		{
-			pthread_create(&data->philo[i].p_id, NULL, funk, (void *)data);
+			pthread_create(&data->philo[i].p_id, NULL, do_philo, (void *)data);
 			i++;
 		}
 		i = 0;
@@ -43,9 +43,11 @@ void	*do_philo(void *ptr)
 	philo = (t_philo *)ptr;
 	data = philo->control;
 	if (philo->id % 2)
-		usleep(1000);
+		usleep(200);
 	while (data->p_death == FALSE)
 	{
-		if (data->)
+		philo_eat(data);
+		philo_sleep(data);
+		philo_thinks(data);
 	}
 }
