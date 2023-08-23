@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 	start_philo(data);
 	printf("main: %d\n", data->num);
 	pthread_mutex_destroy(&(data->mutex));
+	free(data->philo);
+	free(data->fork);
 	free(data);
 	return (0);
 }
