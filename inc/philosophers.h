@@ -15,6 +15,7 @@
 # include "../libft/inc/libft.h"
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 # define TRUE 0
 # define FALSE 1
@@ -38,7 +39,6 @@ struct s_control
 	int				sleep;
 	int				end_count;
 	t_philo			*philo;
-	pthread_mutex_t	mutex;
 	pthread_mutex_t	*fork;
 	int				p_death;
 	int				num;
@@ -49,5 +49,7 @@ int		error(void);
 void	start_philo(t_control *data);
 void	one_philo(t_philo *philo);
 void	philo_eat(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
 
 # endif

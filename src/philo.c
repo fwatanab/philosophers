@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/29 17:56:03 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/29 20:26:50 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	*do_philo(void *ptr)
 	if (data->p_death == FALSE)
 	{
 		philo_eat(philo);
-//		philo_sleep(philo);
-//		philo_thinks(philo);
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 	return (NULL);
 }
