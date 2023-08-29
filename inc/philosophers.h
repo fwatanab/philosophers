@@ -19,16 +19,18 @@
 # define TRUE 0
 # define FALSE 1
 
+typedef struct s_control t_control;
+
 typedef struct s_philo
 {
 	pthread_t	p_id;
 	int			id;
 	int			l_fork;
 	int			r_fork;
-	t_control	control;
+	t_control	*control;
 }	t_philo;
 
-typedef struct s_control
+struct s_control
 {
 	int				number;
 	int				die;
@@ -40,11 +42,12 @@ typedef struct s_control
 	pthread_mutex_t	*fork;
 	int				p_death;
 	int				num;
-}	t_control;
+};
 
 void	input_args(int argc, char **argv, t_control *data);
 int		error(void);
 void	start_philo(t_control *data);
-void	*funk(void *data);
+void	one_philo(t_philo *philo);
+void	philo_eat(t_philo *philo);
 
 # endif

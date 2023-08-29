@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/22 14:13:55 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:30:10 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	input_philo(t_control *data)
 	while (i < data->number)
 	{
 		data->philo[i].id = i + 1;
-		data->philo[i].l_fork = 1;
+		data->philo[i].l_fork = i;
+		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
 		i++;
 	}
@@ -38,7 +39,7 @@ void	input_args(int argc, char **argv, t_control *data)
 	data->philo = (t_philo *)malloc(sizeof(t_philo));
 	if (!data->philo)
 		return ;
-	data->fork = (mutex_t *)malloc(sizeof(mutex_t));
+	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
 	if (!data->fork)
 		return ;
 	input_philo(data);

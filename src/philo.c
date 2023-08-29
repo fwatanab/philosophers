@@ -6,34 +6,11 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/23 17:46:02 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:56:03 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
-
-void	start_philo(t_control *data)
-{
-	int	i;
-
-	if (data->number == 1)
-		printf("number == 1\n");//one_philo(data->philo);
-	else
-	{
-		i = 0;
-		while (i < data->number)
-		{
-			pthread_create(&data->philo[i].p_id, NULL, do_philo, (void *)data);
-			i++;
-		}
-		i = 0;
-		while (i < data->number)
-		{
-			pthread_join(data->philo[i].p_id, NULL);
-			i++;
-		}
-	}
-}
 
 void	*do_philo(void *ptr)
 {
@@ -44,10 +21,34 @@ void	*do_philo(void *ptr)
 	data = philo->control;
 	if (philo->id % 2)
 		usleep(200);
-	while (data->p_death == FALSE)
+	if (data->p_death == FALSE)
 	{
-		philo_eat(data);
-		philo_sleep(data);
-		philo_thinks(data);
+		philo_eat(philo);
+//		philo_sleep(philo);
+//		philo_thinks(philo);
+	}
+	return (NULL);
+}
+
+void	start_philo(t_control *data)
+{
+	int	i;
+
+	if (data->number == 1)
+		one_philo(data->philo);
+	else
+	{
+		i = 0;
+		while (i < data->number)
+		{
+			pthread_create(&data->philo[i].p_id, NULL, do_philo, (void *)&data->philo[i]);
+			i++;
+		}
+		i = 0;
+		while (i < data->number)
+		{
+			pthread_join(data->philo[i].p_id, NULL);
+			i++;
+		}
 	}
 }
