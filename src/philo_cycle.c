@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/29 20:26:49 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:27:39 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	philo_eat(t_philo *philo)
 		printf("%d is eating\n", philo->id);
 		pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
 		pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
+//		count_time(philo->control);
 	}
 }
 

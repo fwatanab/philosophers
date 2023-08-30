@@ -40,6 +40,7 @@ struct s_control
 	int				end_count;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
+	struct timeval	tv;
 	int				p_death;
 	int				num;
 };
@@ -51,5 +52,6 @@ void	one_philo(t_philo *philo);
 void	philo_eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
+void	time_init(void);//t_control *data);
 
 # endif

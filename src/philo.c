@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/29 20:26:50 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:27:40 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	start_philo(t_control *data)
 {
 	int	i;
 
+	time_init(data);
 	if (data->number == 1)
 		one_philo(data->philo);
 	else
