@@ -1,11 +1,12 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 20:44:33 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/09 20:27:10 by fwatanab         ###   ########.fr       */
+/*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
+/*   Updated: 2023/08/31 16:17:58 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +20,9 @@
 
 # define TRUE 0
 # define FALSE 1
+
+# define EAT 0
+# define SLEEP 1
 
 typedef struct s_control t_control;
 
@@ -40,18 +44,19 @@ struct s_control
 	int				end_count;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
-	struct timeval	tv;
+	long long		elapsed_time;
 	int				p_death;
 	int				num;
 };
 
-void	input_args(int argc, char **argv, t_control *data);
-int		error(void);
-void	start_philo(t_control *data);
-void	one_philo(t_philo *philo);
-void	philo_eat(t_philo *philo);
-void	philo_sleep(t_philo *philo);
-void	philo_think(t_philo *philo);
-void	time_init(void);//t_control *data);
+void		input_args(int argc, char **argv, t_control *data);
+int			error(void);
+void		start_philo(t_control *data);
+void		one_philo(t_philo *philo);
+void		philo_eat(t_philo *philo);
+void		philo_sleep(t_philo *philo);
+void		philo_think(t_philo *philo);
+long long	get_time(void);
+void		check_time(t_control *data, int flag);
 
 # endif
