@@ -23,6 +23,8 @@ static void	input_philo(t_control *data)
 		data->philo[i].l_fork = i;
 		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
+		data->philo[i].tv.tv_sec = 0;
+		data->philo[i].tv.tv_usec = 0;
 		i++;
 	}
 }

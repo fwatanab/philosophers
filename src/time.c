@@ -1,50 +1,35 @@
 #include "../inc/philosophers.h"
 
-long long	get_time()
+struct timeval	get_time()
 {
 	struct timeval	tv;
-	long long		time;
 
 	gettimeofday(&tv, NULL);
-
-	time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
-	return (time);
+	return (tv);
 }
 
-void	check_time(t_control *data, int flag)
+void	count_time(t_philo *philo, int flag)
 {
-	long long	now_time;
-	long long	tmp;
-	int			time;
-
-	now_time = get_time();
-	if (flag == EAT)
-		usleep(data->eat * 1000);
-//	if (flag == SLEEP)
-//		usleep(data->sleep * 1000);
-	tmp = get_time();
-	time = tmp - now_time;
-	data->elapsed_time += time;
-	printf("elapsed time->%d\n", data->elapsed_time);
-}
-
-long long	timestamp(t_control *data)
-{
+	struct timeval	tv;
 	struct timeval	now_time;
 
+	gettimeofday(&tv, NULL);
+	if (flag == EAT)
+		usleep(philo->control->eat * 1000);
 	gettimeofday(&now_time, NULL);
-	return (((now_time.tv_sec - data->tv_sec) * 1000)\
-			+ ((now_time.tv_usec - data->tv_usec) / 1000));
+	philo->tv.tv_sec += (now_time.tv_sec - tv.tv_sec);
+	philo->tv.tv_usec += (now_time.tv_usec - tv.tv_usec);
+//	if (data->tv.tv_usec >= 1000000)
+//	{
+//		data->tv.tv_sec += 1;
+//		data->tv.tv_usec -= 1000000;
+//	}
 }
 
-int	main()
+long long	timestamp(struct timeval tv)
 {
-	struct timeval	tv;
-	long long		elapsed_time;
+	long long	ms_time;
 
-	gettimeofday(&tv, NULL);
-	usleep(15000);
-	elapsed_time = timestamp(tv);
-	printf("%lld\n", elapsed_time);
-	return 0;
+	ms_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (ms_time);
 }

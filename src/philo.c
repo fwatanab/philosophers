@@ -34,7 +34,6 @@ void	start_philo(t_control *data)
 {
 	int	i;
 
-	time_init(data);
 	if (data->number == 1)
 		one_philo(data->philo);
 	else
