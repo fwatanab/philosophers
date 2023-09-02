@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 19:54:40 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/29 20:03:58 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/09/02 13:08:11 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ int	main(int argc, char **argv)
 	input_args(argc, argv, data);
 	if (!data->philo)
 		return (1);
-	pthread_mutex_init(data->fork, NULL);
 	start_philo(data);
-	pthread_mutex_destroy(data->fork);
 	free(data->philo);
 	free(data->fork);
+	free(data->bed);
 	free(data);
 	return (0);
 }

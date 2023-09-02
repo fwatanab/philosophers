@@ -8,14 +8,14 @@ long long	get_time()
 	return (now_time.tv_sec * 1000 + now_time.tv_usec / 1000);
 }
 
-void	eat_time(t_control *data)
+void	count_time(t_control *data, int ms_time)
 {
 	long long	start_time;
 	long long	time;
 
 	time = 0;
 	start_time = get_time();
-	while (time < data->eat)
+	while (time < ms_time)
 	{
 		time = get_time() - start_time;
 		usleep(1000);
