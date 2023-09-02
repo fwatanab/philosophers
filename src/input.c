@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/29 17:30:10 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:55:17 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,40 @@ static void	input_philo(t_control *data)
 		data->philo[i].l_fork = i;
 		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
+		data->philo[i].eat_count = 0;
 		i++;
 	}
 }
 
 void	input_args(int argc, char **argv, t_control *data)
 {
+	int	i;
+
 	data->number = ft_atoi(argv[1]);
 	data->die = ft_atoi(argv[2]);
 	data->eat = ft_atoi(argv[3]);
 	data->sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		data->end_count = ft_atoi(argv[5]);
-	data->p_death = FALSE;
-	data->tv.tv_sec = 0;
-	data->tv.tv_usec = 0;
+		data->max_eat = ft_atoi(argv[5]);
+	else
+		data->max_eat = 0;
+	data->p_death = LIFE;
 	data->elapsed_time = 0;
-	data->philo = (t_philo *)malloc(sizeof(t_philo));
+	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->number);
 	if (!data->philo)
 		return ;
-	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->number);
 	if (!data->fork)
 		return ;
+	data->bed = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->number);
+	if (!data->bed)
+		return ;
+	i = 0;
+	while (i < data->number)
+	{
+		pthread_mutex_init(&data->fork[i], NULL);
+		pthread_mutex_init(&data->bed[i], NULL);
+		i++;
+	}
 	input_philo(data);
 }

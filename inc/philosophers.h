@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/31 16:17:58 by fwatanab         ###   ########.fr       */
+/*   Updated: 2023/09/02 12:55:07 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define TRUE 0
-# define FALSE 1
+# define LIFE 0
+# define DEATH 1
 
 # define EAT 0
 # define SLEEP 1
@@ -33,6 +33,7 @@ typedef struct s_philo
 	int				l_fork;
 	int				r_fork;
 	t_control		*control;
+	int				eat_count;
 }	t_philo;
 
 struct s_control
@@ -41,13 +42,12 @@ struct s_control
 	int				die;
 	int				eat;
 	int				sleep;
-	int				end_count;
+	int				max_eat;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
-	struct timeval	tv;
+	pthread_mutex_t	*bed;
 	long long		elapsed_time;
 	int				p_death;
-	int				num;
 };
 
 void			input_args(int argc, char **argv, t_control *data);
@@ -58,7 +58,7 @@ void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
 long long		get_time(void);
-void			eat_time(t_control *data);
+void			count_time(t_control *data, int ms_time);
 long long		timestamp(struct timeval tv);
 void			print_log(struct timeval tv, int p_nbr, char *str);
 
