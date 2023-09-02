@@ -25,13 +25,13 @@ void	philo_eat(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->control->fork[philo->l_fork]);
 		printf("%lld %d hold a left fork\n",\
-				timestamp(philo->tv), philo->id);
+				philo->control->elapsed_time, philo->id);
 		pthread_mutex_lock(&philo->control->fork[philo->r_fork]);
 		printf("%lld %d hold a right fork\n",\
-				timestamp(philo->tv), philo->id);
-		count_time(philo, EAT);
+				philo->control->elapsed_time, philo->id);
+		eat_time(philo->;
 		printf("%lld %d is eating\n",\
-				timestamp(philo->tv), philo->id);
+				philo->control->elapsed_time, philo->id);
 		pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
 		pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
 	}
@@ -43,7 +43,7 @@ void	philo_sleep(t_philo *philo)
 	if (philo->control->p_death == FALSE)
 	{
 		printf("%lld %d is sleeping\n",\
-				timestamp(philo->tv), philo->id);
+				philo->control->elapsed_time, philo->id);
 	}
 }
 
@@ -52,5 +52,5 @@ void	philo_think(t_philo *philo)
 
 	if (philo->control->p_death == FALSE)
 		printf("%lld %d is thinking\n",\
-				timestamp(philo->tv), philo->id);
+				philo->control->elapsed_time, philo->id);
 }

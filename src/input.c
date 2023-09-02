@@ -23,8 +23,6 @@ static void	input_philo(t_control *data)
 		data->philo[i].l_fork = i;
 		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
-		data->philo[i].tv.tv_sec = 0;
-		data->philo[i].tv.tv_usec = 0;
 		i++;
 	}
 }
@@ -38,6 +36,9 @@ void	input_args(int argc, char **argv, t_control *data)
 	if (argc == 6)
 		data->end_count = ft_atoi(argv[5]);
 	data->p_death = FALSE;
+	data->tv.tv_sec = 0;
+	data->tv.tv_usec = 0;
+	data->elapsed_time = 0;
 	data->philo = (t_philo *)malloc(sizeof(t_philo));
 	if (!data->philo)
 		return ;

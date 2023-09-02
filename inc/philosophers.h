@@ -33,7 +33,6 @@ typedef struct s_philo
 	int				l_fork;
 	int				r_fork;
 	t_control		*control;
-	struct timeval	tv;
 }	t_philo;
 
 struct s_control
@@ -45,6 +44,7 @@ struct s_control
 	int				end_count;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
+	struct timeval	tv;
 	long long		elapsed_time;
 	int				p_death;
 	int				num;
@@ -57,8 +57,8 @@ void			one_philo(t_philo *philo);
 void			philo_eat(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
-struct timeval	get_time(void);
-void			count_time(t_philo *philo, int flag);
+long long		get_time(void);
+void			eat_time(t_control *data);
 long long		timestamp(struct timeval tv);
 void			print_log(struct timeval tv, int p_nbr, char *str);
 
