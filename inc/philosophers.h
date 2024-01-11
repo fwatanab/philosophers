@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/09/02 12:55:07 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:03:47 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_philo
 	int				r_fork;
 	t_control		*control;
 	int				eat_count;
+	int				total;
 }	t_philo;
 
 struct s_control
@@ -45,9 +46,12 @@ struct s_control
 	int				max_eat;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
-	pthread_mutex_t	*bed;
+	pthread_mutex_t	bed;
+	pthread_mutex_t	time_mutex;
+	long long		start_time;
 	long long		elapsed_time;
 	int				p_death;
+	int				num;
 };
 
 void			input_args(int argc, char **argv, t_control *data);

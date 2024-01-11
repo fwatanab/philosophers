@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/09/02 12:55:17 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:04:52 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	input_args(int argc, char **argv, t_control *data)
 	else
 		data->max_eat = 0;
 	data->p_death = LIFE;
+	data->start_time = get_time();
 	data->elapsed_time = 0;
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->number);
 	if (!data->philo)
@@ -48,15 +49,10 @@ void	input_args(int argc, char **argv, t_control *data)
 	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->number);
 	if (!data->fork)
 		return ;
-	data->bed = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->number);
-	if (!data->bed)
-		return ;
 	i = 0;
 	while (i < data->number)
-	{
-		pthread_mutex_init(&data->fork[i], NULL);
-		pthread_mutex_init(&data->bed[i], NULL);
-		i++;
-	}
+		pthread_mutex_init(&data->fork[i++], NULL);
+	pthread_mutex_init(&data->bed, NULL);
+	pthread_mutex_init(&data->time_mutex, NULL);
 	input_philo(data);
 }

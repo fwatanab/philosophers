@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/09/02 13:08:46 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:39:47 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ void	start_philo(t_control *data)
 	}
 	i = 0;
 	while (i < data->number)
-	{
-		pthread_mutex_destroy(&data->fork[i]);
-		pthread_mutex_destroy(&data->bed[i]);
-		i++;
-	}
+		pthread_mutex_destroy(&data->fork[i++]);
+	pthread_mutex_destroy(&data->bed);
 }

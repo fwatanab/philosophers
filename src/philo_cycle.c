@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/09/02 12:55:12 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/11 13:36:56 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,18 @@ void	philo_eat(t_philo *philo)
 
 void	philo_sleep(t_philo *philo)
 {
-
 	if (philo->control->p_death == LIFE)
 	{
-		pthread_mutex_lock(&philo->control->bed[philo->id]);
+		pthread_mutex_lock(&philo->control->bed);
 		printf("%lld %d is sleeping\n",\
 				philo->control->elapsed_time, philo->id);
 		count_time(philo->control, philo->control->sleep);
-		pthread_mutex_unlock(&philo->control->bed[philo->id]);
+		pthread_mutex_unlock(&philo->control->bed);
 	}
 }
 
 void	philo_think(t_philo *philo)
 {
-
 	if (philo->control->p_death == LIFE)
 		printf("%lld %d is thinking\n",\
 				philo->control->elapsed_time, philo->id);

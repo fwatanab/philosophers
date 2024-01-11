@@ -27,7 +27,6 @@ int	main(int argc, char **argv)
 	start_philo(data);
 	free(data->philo);
 	free(data->fork);
-	free(data->bed);
 	free(data);
 	return (0);
 }
