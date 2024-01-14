@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/11 12:04:52 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/14 21:06:55 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ static void	input_philo(t_control *data)
 		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
 		data->philo[i].eat_count = 0;
+		if (data->philo[i].id % 2)
+			data->philo[i].elapsed_time = data->eat;
+		else
+			data->philo[i].elapsed_time = 0;
 		i++;
 	}
 }
@@ -41,7 +45,6 @@ void	input_args(int argc, char **argv, t_control *data)
 	else
 		data->max_eat = 0;
 	data->p_death = LIFE;
-	data->start_time = get_time();
 	data->elapsed_time = 0;
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->number);
 	if (!data->philo)
@@ -52,7 +55,5 @@ void	input_args(int argc, char **argv, t_control *data)
 	i = 0;
 	while (i < data->number)
 		pthread_mutex_init(&data->fork[i++], NULL);
-	pthread_mutex_init(&data->bed, NULL);
-	pthread_mutex_init(&data->time_mutex, NULL);
 	input_philo(data);
 }
