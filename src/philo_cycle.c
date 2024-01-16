@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/14 21:13:16 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:17:01 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	philo_eat(t_philo *philo)
 				philo->elapsed_time, philo->id);
 		pthread_mutex_lock(&philo->control->fork[philo->r_fork]);
 		printf("%lld %d has taken a fork\n",\
-				philo/*->control*/->elapsed_time, philo->id);
+				philo->elapsed_time, philo->id);
 //		surveillance(philo->control, philo);
 		printf("%lld %d is eating\n",\
 				philo->elapsed_time, philo->id);
