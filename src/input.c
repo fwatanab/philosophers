@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/17 19:06:20 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:23:22 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	input_philo(t_control *data)
 		data->philo[i].r_fork = (i + 1) % data->number;
 		data->philo[i].control = data;
 		data->philo[i].eat_count = 0;
+		data->philo[i].eat_time = 0;
 		i++;
 	}
 }

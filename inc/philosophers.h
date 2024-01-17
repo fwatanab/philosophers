@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/17 19:05:29 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:23:09 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_philo
 	t_control		*control;
 	int				eat_count;
 	int				total;
+	long long		eat_time;
 }	t_philo;
 
 struct s_control
