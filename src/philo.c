@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/14 21:16:09 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:10:32 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*do_philo(void *ptr)
 	philo = (t_philo *)ptr;
 	data = philo->control;
 	if (philo->id % 2)
-		usleep(200);
+		usleep(2000);
 	if (data->p_death == LIFE)
 	{
 		philo_eat(philo);

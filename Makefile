@@ -7,7 +7,7 @@ SRCS = main.c input.c error.c philo.c philo_cycle.c time.c surveillance.c
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g
 RM		= rm -f
 
 LIBFTDIR	= libft/

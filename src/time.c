@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 04:30:44 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/14 21:12:24 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:07:55 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long long	get_time()
 	return (now_time.tv_sec * 1000LL + now_time.tv_usec / 1000LL);
 }
 
-void	count_time(t_philo *philo, int ms_time)
+void	count_time(t_control *data, int ms_time)
 {
 	long long	start_time;
 	long long	now_time;
@@ -32,7 +32,7 @@ void	count_time(t_philo *philo, int ms_time)
 		usleep(100);
 		now_time = get_time();
 	}
-	philo->elapsed_time += (now_time - start_time);
+	data->elapsed_time = (now_time - data->start_time);
 }
 
 long long	timestamp(struct timeval tv)
