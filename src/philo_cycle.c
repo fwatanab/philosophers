@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/17 20:12:23 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:53:17 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ void	philo_eat(t_philo *philo)
 		pthread_mutex_lock(&philo->control->fork[philo->r_fork]);
 		printf("%lld %d has taken a fork\n",\
 				philo->control->elapsed_time, philo->id);
+		pthread_mutex_lock(&philo->control->surveil_mutex);
 		if (surveillance(philo->control, philo) == 1)
+		{
+			pthread_mutex_unlock(&philo->control->surveil_mutex);
 			return ;
+		}
+		pthread_mutex_unlock(&philo->control->surveil_mutex);
 		printf("%lld %d is eating\n",\
 				philo->control->elapsed_time, philo->id);
 		philo->eat_count += 1;
@@ -44,8 +49,8 @@ void	philo_sleep(t_philo *philo)
 {
 	if (philo->control->p_death == LIFE)
 	{
-			printf("%lld %d is sleeping\n",\
-				philo->control->elapsed_time, philo->id);
+		printf("%lld %d is sleeping\n",\
+			philo->control->elapsed_time, philo->id);
 		count_time(philo->control, philo->control->sleep);
 	}
 }
@@ -53,6 +58,8 @@ void	philo_sleep(t_philo *philo)
 void	philo_think(t_philo *philo)
 {
 	if (philo->control->p_death == LIFE)
+	{
 		printf("%lld %d is thinking\n",\
 				philo->control->elapsed_time, philo->id);
+	}
 }

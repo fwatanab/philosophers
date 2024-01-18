@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/17 20:23:22 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:51:24 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	input_args(int argc, char **argv, t_control *data)
 	i = 0;
 	while (i < data->number)
 		pthread_mutex_init(&data->fork[i++], NULL);
+	pthread_mutex_init(&data->surveil_mutex, NULL);
 	input_philo(data);
 }
