@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 20:21:38 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 21:42:35 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,13 @@ void	input_args(int argc, char **argv, t_control *data)
 	data->fork = malloc(sizeof(pthread_mutex_t) * data->number);
 	if (!data->fork)
 		return ;
+	pthread_mutex_init(&data->eat_loop, NULL);
+	pthread_mutex_init(&data->sleep_loop, NULL);
+	pthread_mutex_init(&data->think_loop, NULL);
 	i = 0;
 	while (i < data->number)
 		pthread_mutex_init(&data->fork[i++], NULL);
 	pthread_mutex_init(&data->surveil_mutex, NULL);
+	pthread_mutex_init(&data->time_mutex, NULL);
 	input_philo(data);
 }

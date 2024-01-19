@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 20:21:11 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 21:43:27 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ struct s_control
 	int				sleep;
 	int				max_eat;
 	t_philo			*philo;
+	pthread_mutex_t	eat_loop;
+	pthread_mutex_t	sleep_loop;
+	pthread_mutex_t	think_loop;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	surveil_mutex;
+	pthread_mutex_t	time_mutex;
 	long long		elapsed_time;
 	long long		start_time;
 	int				p_death;
