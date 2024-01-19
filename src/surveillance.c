@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:55:35 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 21:49:26 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:24:16 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	surveillance(t_control *data, t_philo *philo)
 	if (((data->elapsed_time + data->eat) - philo->eat_time) > data->die)
 	{
 		usleep(200);
+		count_time(data, data->die - (data->elapsed_time - philo->eat_time));
 		printf("%lld %d died\n",\
 				data->elapsed_time, philo->id);
 		data->p_death = DEATH;
