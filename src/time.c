@@ -6,13 +6,13 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 04:30:44 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/17 19:07:55 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:27:50 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-long long	get_time()
+long long	get_time(void)
 {
 	struct timeval	now_time;
 
@@ -42,4 +42,3 @@ long long	timestamp(struct timeval tv)
 	ms_time = tv.tv_sec * 1000LL + tv.tv_usec / 1000LL;
 	return (ms_time);
 }
-

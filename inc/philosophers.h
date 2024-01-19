@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 21:16:00 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:21:11 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define EAT 0
 # define SLEEP 1
 
-typedef struct s_control t_control;
+typedef struct s_control	t_control;
 
 typedef struct s_philo
 {
@@ -68,4 +68,4 @@ void			print_log(struct timeval tv, int p_nbr, char *str);
 int				surveillance(t_control *data, t_philo *philo);
 void			check_eat_count(t_control *data);
 
-# endif
+#endif

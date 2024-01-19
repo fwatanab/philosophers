@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 21:25:23 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:21:38 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	input_args(int argc, char **argv, t_control *data)
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->number);
 	if (!data->philo)
 		return ;
-	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->number);
+	data->fork = malloc(sizeof(pthread_mutex_t) * data->number);
 	if (!data->fork)
 		return ;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 21:48:40 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 20:23:33 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	start_philo(t_control *data)
 		i = 0;
 		while (i < data->number)
 		{
-			pthread_create(&data->philo[i].p_id, NULL, do_philo, (void *)&data->philo[i]);
+			pthread_create(&data->philo[i].p_id, \
+					NULL, do_philo, (void *)&data->philo[i]);
 			i++;
 		}
 		i = 0;
