@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:55:35 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 20:26:43 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 22:20:27 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	check_eat_count(t_control *data)
 	int	i;
 
 	i = 0;
+	if (data->max_eat == -1)
+		return ;
 	while (i < data->number)
 	{
 		if (data->philo[i].eat_count < data->max_eat)

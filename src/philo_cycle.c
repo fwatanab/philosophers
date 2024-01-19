@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 22:03:33 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/19 22:26:06 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	one_philo(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->control->eat_loop);
+//	pthread_mutex_lock(&philo->control->eat_loop);
 	if (philo->control->p_death == LIFE && !philo->control->eat_fin)
 	{
 		pthread_mutex_lock(&philo->control->fork[philo->l_fork]);
@@ -59,7 +59,7 @@ void	philo_eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
 		pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
 	}
-	pthread_mutex_unlock(&philo->control->eat_loop);
+//	pthread_mutex_unlock(&philo->control->eat_loop);
 }
 
 void	philo_sleep(t_philo *philo)
