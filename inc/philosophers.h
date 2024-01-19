@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 18:50:52 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:16:00 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ struct s_control
 	long long		elapsed_time;
 	long long		start_time;
 	int				p_death;
-	int				num;
+	int				eat_fin;
 };
 
 void			input_args(int argc, char **argv, t_control *data);
@@ -66,5 +66,6 @@ void			count_time(t_control *data, int ms_time);
 long long		timestamp(struct timeval tv);
 void			print_log(struct timeval tv, int p_nbr, char *str);
 int				surveillance(t_control *data, t_philo *philo);
+void			check_eat_count(t_control *data);
 
 # endif

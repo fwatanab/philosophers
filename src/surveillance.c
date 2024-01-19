@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:55:35 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 18:53:30 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:49:26 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,18 @@ int	surveillance(t_control *data, t_philo *philo)
 		return (1);
 	}
 	return (0);
+}
+
+void	check_eat_count(t_control *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number)
+	{
+		if (data->philo[i].eat_count < data->max_eat)
+			return ;
+		i++;
+	}
+	data->eat_fin = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:12:26 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/18 18:51:24 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:25:23 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void	input_args(int argc, char **argv, t_control *data)
 	if (argc == 6)
 		data->max_eat = ft_atoi(argv[5]);
 	else
-		data->max_eat = 0;
+		data->max_eat = 1;
 	data->p_death = LIFE;
+	data->eat_fin = 0;
 	data->start_time = get_time();
 	data->elapsed_time = 0;
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->number);
