@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:55:35 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/22 17:33:52 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:49:46 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ int	surveillance(t_control *data, t_philo *philo)
 	long long	time;
 	long long	last_time;
 
-	pthread_mutex_lock(&data->time_mutex);
 	if (data->p_death == DEATH)
 	{
-		pthread_mutex_unlock(&data->time_mutex);
 		return (1);
 	}
+	pthread_mutex_lock(&data->time_mutex);
 	time = (data->elapsed_time + data->eat) - philo->eat_time;
 	pthread_mutex_unlock(&data->time_mutex);
 	if (time > data->die)
