@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:43 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 20:23:33 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:57:11 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,28 @@ void	*do_philo(void *ptr)
 {
 	t_philo		*philo;
 	t_control	*data;
+	int			p_death;
+	int			eat_fin;
 
 	philo = (t_philo *)ptr;
 	data = philo->control;
 	if (philo->id % 2)
 		usleep(2000);
-	while (data->p_death == LIFE && !data->eat_fin)
+//	while (data->p_death == LIFE && !data->eat_fin)
+//	{
+//		philo_eat(philo);
+//		philo_sleep(philo);
+//		philo_think(philo);
+//	}
+	while (1)
 	{
+		pthread_mutex_lock(&data->time_mutex);
+		p_death = data->p_death;
+		eat_fin = data->eat_fin;
+		pthread_mutex_unlock(&data->time_mutex);
+		
+		if (p_death != LIFE || eat_fin)
+			break;
 		philo_eat(philo);
 		philo_sleep(philo);
 		philo_think(philo);

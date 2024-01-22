@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 04:30:44 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/19 20:27:50 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:50:40 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	count_time(t_control *data, int ms_time)
 		usleep(100);
 		now_time = get_time();
 	}
+	pthread_mutex_lock(&data->time_mutex);
 	data->elapsed_time = (now_time - data->start_time);
+	pthread_mutex_unlock(&data->time_mutex);
 }
 
 long long	timestamp(struct timeval tv)
