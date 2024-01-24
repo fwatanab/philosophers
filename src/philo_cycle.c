@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/22 18:14:42 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:10:35 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ void	philo_eat(t_philo *philo)
 		printf("%lld %d has taken a fork\n", \
 				philo->control->elapsed_time, philo->id);
 	pthread_mutex_unlock(&philo->control->time_mutex);
+	pthread_mutex_lock(&philo->control->surveil_mutex);
 	if (surveillance(philo->control, philo) == 1)
 	{
+		pthread_mutex_unlock(&philo->control->surveil_mutex);
 		pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
 		pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
 		return ;
 	}
+	pthread_mutex_unlock(&philo->control->surveil_mutex);
 	pthread_mutex_lock(&philo->control->time_mutex);
 	printf("%lld %d is eating\n", \
 			philo->control->elapsed_time, philo->id);
@@ -86,7 +89,6 @@ void	philo_sleep(t_philo *philo)
 			philo->control->elapsed_time, philo->id);
 	pthread_mutex_unlock(&philo->control->time_mutex);
 	count_time(philo->control, philo->control->sleep);
-	
 }
 
 void	philo_think(t_philo *philo)
