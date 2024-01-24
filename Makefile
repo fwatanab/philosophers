@@ -7,7 +7,7 @@ SRCS = main.c input.c error.c philo.c philo_cycle.c time.c surveillance.c eat_ut
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
 LIBFTDIR	= libft/
