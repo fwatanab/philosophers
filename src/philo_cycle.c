@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:34:38 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/24 16:10:35 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:02:00 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,9 @@ void	philo_eat(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->control->time_mutex);
 	pthread_mutex_lock(&philo->control->fork[philo->l_fork]);
-	pthread_mutex_lock(&philo->control->time_mutex);
-	if (philo->control->p_death == LIFE)
-		printf("%lld %d has taken a fork\n", \
-				philo->control->elapsed_time, philo->id);
-	pthread_mutex_unlock(&philo->control->time_mutex);
+	take_forks(philo);
 	pthread_mutex_lock(&philo->control->fork[philo->r_fork]);
-	pthread_mutex_lock(&philo->control->time_mutex);
-	if (philo->control->p_death == LIFE)
-		printf("%lld %d has taken a fork\n", \
-				philo->control->elapsed_time, philo->id);
-	pthread_mutex_unlock(&philo->control->time_mutex);
+	take_forks(philo);
 	pthread_mutex_lock(&philo->control->surveil_mutex);
 	if (surveillance(philo->control, philo) == 1)
 	{
@@ -52,25 +44,8 @@ void	philo_eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_unlock(&philo->control->surveil_mutex);
-	pthread_mutex_lock(&philo->control->time_mutex);
-	printf("%lld %d is eating\n", \
-			philo->control->elapsed_time, philo->id);
-	philo->eat_count += 1;
-	pthread_mutex_unlock(&philo->control->time_mutex);
-	check_eat_count(philo->control);
-	pthread_mutex_lock(&philo->control->time_mutex);
-	if (philo->control->eat_fin)
-	{
-		pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
-		pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
-		pthread_mutex_unlock(&philo->control->time_mutex);
+	if (eating(philo) == 1)
 		return ;
-	}
-	pthread_mutex_unlock(&philo->control->time_mutex);
-	count_time(philo->control, philo->control->eat);
-	pthread_mutex_lock(&philo->control->time_mutex);
-	philo->eat_time = philo->control->elapsed_time;
-	pthread_mutex_unlock(&philo->control->time_mutex);
 	pthread_mutex_unlock(&philo->control->fork[philo->l_fork]);
 	pthread_mutex_unlock(&philo->control->fork[philo->r_fork]);
 }

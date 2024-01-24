@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/24 15:57:00 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:58:17 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int				error(void);
 void			start_philo(t_control *data);
 void			one_philo(t_philo *philo);
 void			philo_eat(t_philo *philo);
+int				eating(t_philo *philo);
+void			take_forks(t_philo *philo);
 void			philo_sleep(t_philo *philo);
 void			philo_think(t_philo *philo);
 long long		get_time(void);
