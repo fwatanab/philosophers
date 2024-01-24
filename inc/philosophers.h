@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/24 16:58:17 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:24:01 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ struct s_control
 };
 
 void			input_args(int argc, char **argv, t_control *data);
+int				check_args(int argc, char **argv);
 int				error(void);
 void			start_philo(t_control *data);
 void			one_philo(t_philo *philo);

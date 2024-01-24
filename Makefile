@@ -2,7 +2,7 @@ NAME	= philo
 
 SRCSDIR	= src/
 
-SRCS = main.c input.c error.c philo.c philo_cycle.c time.c surveillance.c eat_utils.c
+SRCS = main.c check_error.c input.c error.c philo.c philo_cycle.c time.c surveillance.c eat_utils.c
 
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 
