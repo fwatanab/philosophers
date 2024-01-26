@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atio.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 00:32:49 by fwatanab          #+#    #+#             */
-/*   Updated: 2023/08/02 09:55:11 by fwatanab         ###   ########.fr       */
+/*   Created: 2024/01/25 21:14:30 by fwatanab          #+#    #+#             */
+/*   Updated: 2024/01/25 21:15:07 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../inc/philosophers.h"
 
 static long long int	cast_cheek(const char *str, size_t i, long long int f)
 {

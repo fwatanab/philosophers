@@ -6,17 +6,19 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/24 19:24:01 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/25 21:36:10 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-# include "../libft/inc/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <limits.h>
 
 # define LIFE 0
 # define DEATH 1
@@ -71,5 +73,9 @@ long long		timestamp(struct timeval tv);
 void			print_log(struct timeval tv, int p_nbr, char *str);
 int				surveillance(t_control *data, t_philo *philo);
 void			check_eat_count(t_control *data);
+
+//ft_utils
+int				ft_atoi(const char *str);
+int				ft_isalpha(int c);
 
 #endif
