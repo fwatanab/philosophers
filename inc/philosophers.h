@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:22:10 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/25 21:36:10 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:40:22 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ void			check_eat_count(t_control *data);
 
 //ft_utils
 int				ft_atoi(const char *str);
-int				ft_isalpha(int c);
+int				ft_isnumber(int c);
 
 #endif

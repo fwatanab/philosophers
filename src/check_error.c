@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:21:34 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/24 19:24:04 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:52:09 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_args_data(char *argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (ft_isalpha((int)argv[i++]) == 1)
+		if (ft_isnumber((int)argv[i++]) == 0)
 			return (1);
 	}
 	return (0);
@@ -43,6 +43,11 @@ int	check_args(int argc, char **argv)
 			return (1);
 		}
 		i++;
+	}
+	if (argv[1][0] == '0')
+	{
+		printf("Error: Number of philosophers cannot be zero.\n");
+		return (1);
 	}
 	return (0);
 }
