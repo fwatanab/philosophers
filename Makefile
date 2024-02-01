@@ -5,7 +5,7 @@ FT_SRCDIR = ft_utils/
 
 SRCS = main.c check_error.c input.c philo.c philo_cycle.c time.c surveillance.c eat_utils.c
 
-FT_SRC = ft_atoi.c ft_isnumber.c
+FT_SRC = ft_atoi.c ft_isnumber.c ft_strlen.c
 
 OBJS	= $(addprefix $(SRCSDIR), $(SRCS:.c=.o))
 
