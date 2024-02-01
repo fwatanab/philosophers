@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 19:21:34 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/29 19:46:51 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/02/01 21:07:46 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (ft_strlen(argv[i]))
+		{
+			printf("Error: Invalid or empty argument provided.\n");
+			return (1);
+		}
 		if (check_args_data(argv[i]) == 1)
 		{
 			printf("Error: No alphabets in arguments.\n");
