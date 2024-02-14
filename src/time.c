@@ -6,7 +6,7 @@
 /*   By: fwatanab <fwatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 04:30:44 by fwatanab          #+#    #+#             */
-/*   Updated: 2024/01/29 18:27:36 by fwatanab         ###   ########.fr       */
+/*   Updated: 2024/02/14 19:47:43 by fwatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	count_time(t_control *data, int ms_time)
 	start_time = get_time();
 	while ((now_time - start_time) < ms_time)
 	{
-		usleep(100);
+		usleep(300);
 		now_time = get_time();
 	}
 	pthread_mutex_lock(&data->time_mutex);
